@@ -1,0 +1,34 @@
+//
+//  HQFReaViewController.h
+//  IOS
+//
+//  Created by qianfeng on 13-11-20.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "HQFReadProtocol.h"
+#import "ASIHTTPRequest.h"
+#import "HQFShowViewController.h"
+
+@interface HQFReaViewController : UIViewController<HQFReadProtocol,ASIHTTPRequestDelegate,UITextViewDelegate,HQFMuLuProtocl>
+{
+    UITextView *_readTextView;
+    CGSize size;
+    BOOL _flag;
+}
+@property (weak, nonatomic) IBOutlet UIView *upMyView;
+@property (weak, nonatomic) IBOutlet UIView *downMyView;
+@property (weak, nonatomic) IBOutlet UIView *myLabelView;
+@property (nonatomic,retain) NSString *myBookId;
+@property (nonatomic,assign) NSInteger myChaterFirst;
+@property (nonatomic,assign) NSInteger myNextChapter;
+@property (nonatomic,assign) NSInteger myUpChapter;
+- (IBAction)readBtn:(UIButton *)sender;
+- (IBAction)setTabOnBtn:(UIButton *)sender;
+- (IBAction)setTabOnBtn1:(UIButton *)sender;
+- (IBAction)setTabOnBtn2:(UIButton *)sender;
+
+
+
+@end

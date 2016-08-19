@@ -1,0 +1,188 @@
+//
+//  GNHotelViewController.m
+//  HHY
+//
+//  Created by jiangjun on 14-4-22.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "GNHotelViewController.h"
+#import "SearchHotelViewController.h"
+#import "CustomView.h"
+#import "CitySelectButton.h"
+#import "SelectTypeButton.h"
+
+@interface GNHotelViewController ()
+
+@end
+
+@implementation GNHotelViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    // Do any additional setup after loading the view.
+    [self initNav:@"酒店"];
+    [self createScreen];
+}
+
+-(void)createScreen
+{
+    NSArray *array = @[@"国内", @"国际"];
+    
+    isChange = NO;
+    for (int i=0; i<2; i++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(i*160, 0, 160, 40);
+        [button setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"buttonBtn"] forState:UIControlStateNormal];
+        button.tag = 100+i;
+        [self.view addSubview:button];
+        [button addTarget:self action:@selector(changeImage:) forControlEvents:UIControlEventTouchUpInside];
+        if (i==1) {
+            [button setBackgroundImage:[UIImage imageNamed:@"buttonCN"] forState:UIControlStateNormal];
+        }
+    }
+    
+    
+    CustomView *headView = [[CustomView alloc] initWithFrame:CGRectMake(0, 60, 320, 170)];
+    [self.view addSubview:headView];
+    
+    NSArray *nameArray = @[@"目的城市", @"酒店名称", @"入住日期", @"退房日期", @"星级"];
+    NSArray *imageArray = @[@"dcity", @"fz", @"cdate", @"cdate", @"star"];
+    
+    for (int i=0; i<5; i++) {
+        UIImageView *imageView = nil;
+        UILabel *ttLable = nil;
+        if (i<2) {
+            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, i*30+10, 13, 11)];
+            ttLable = [[UILabel alloc] initWithFrame:CGRectMake(40, i*30, 60, 30)];
+        }else if(i==4){
+            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, i*30+30, 13*4/3, 11*4/3)];
+            ttLable = [[UILabel alloc] initWithFrame:CGRectMake(40, i*30+20, 60, 30)];
+        }else{
+            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, (i-2)*40+70, 13*4/3, 11*4/3)];
+            ttLable = [[UILabel alloc] initWithFrame:CGRectMake(40, (i-2)*40+60, 60, 40)];
+        }
+       
+        imageView.image = [UIImage imageNamed:[imageArray objectAtIndex:i]];
+        [headView addSubview:imageView];
+        
+        ttLable.backgroundColor = [UIColor clearColor];
+        ttLable.text = [nameArray objectAtIndex:i];
+        ttLable.textColor = [JJDevice colorWithR:59 G:59 B:59 A:1];
+        ttLable.font = [UIFont systemFontOfSize:14];
+        ttLable.textAlignment = NSTextAlignmentCenter;
+        [headView addSubview:ttLable];
+     
+        if (i!=4) {
+            UIImageView *lineView = nil;
+            if (i<2) {
+                lineView  = [[UIImageView alloc] initWithFrame:CGRectMake(40, 30+i*30, 280, 1)];
+            }else{
+                lineView  = [[UIImageView alloc] initWithFrame:CGRectMake(40, 20+i*40, 280, 1)];
+            }
+            lineView.image = [UIImage imageNamed:@"xian"];
+            [headView addSubview:lineView];
+        }
+    }
+    
+    _cityTF = [[UITextField alloc] initWithFrame:CGRectMake(120, 30, 200, 30)];
+    _cityTF.borderStyle = UITextBorderStyleNone;
+    _cityTF.placeholder = @"输入你想查找的酒店名称";
+    _cityTF.delegate = self;
+    [headView addSubview:_cityTF];
+
+    _cityBT = [[SelectTypeButton alloc] initWithFrame:CGRectMake(120, 0, 200, 30)];
+    _cityBT.tag = 100;
+    [_cityBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:_cityBT];
+
+    _starBT = [[SelectTypeButton alloc] initWithFrame:CGRectMake(120, 140, 200, 30)];
+    _starBT.tag = 100;
+    [_starBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:_starBT];
+    
+    _bookDateBT = [[CitySelectButton alloc] initWithFrame:CGRectMake(120, 60, 200, 40)];
+    _bookDateBT.tag = 101;
+    [_bookDateBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:_bookDateBT];
+
+    _leavDateBT = [[CitySelectButton alloc] initWithFrame:CGRectMake(120, 100, 200, 40)];
+    _leavDateBT.tag = 102;
+    [_leavDateBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:_leavDateBT];
+    
+    UIButton *askButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [askButton setBackgroundImage:[UIImage imageNamed:@"chaxun"] forState:UIControlStateNormal];
+    askButton.frame = CGRectMake(40, 280, 240, 40);
+    askButton.layer.cornerRadius = 5;
+    [askButton addTarget:self action:@selector(choseHotel) forControlEvents:UIControlEventTouchUpInside];
+    askButton.layer.masksToBounds = YES;
+    [self.view addSubview:askButton];
+}
+
+-(void)choseHotel
+{
+    SearchHotelViewController *sc = [[SearchHotelViewController alloc] init];
+    [self.navigationController pushViewController:sc animated:YES];
+}
+
+-(void)choseNum:(UIButton *)button
+{
+    
+}
+
+-(void)changeImage:(UIButton *)button
+{
+    if (button.tag == 100) {
+        [button setBackgroundImage:[UIImage imageNamed:@"buttonBtn"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        UIButton *buttontmp = (UIButton *)[self.view viewWithTag:101];
+        [buttontmp setBackgroundImage:[UIImage imageNamed:@"buttonCN"] forState:UIControlStateNormal];
+        [buttontmp setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        isChange = NO;
+    }else if (button.tag == 101){
+        [button setBackgroundImage:[UIImage imageNamed:@"buttonBtn"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        UIButton *buttontmp = (UIButton *)[self.view viewWithTag:100];
+        [buttontmp setBackgroundImage:[UIImage imageNamed:@"buttonCN"] forState:UIControlStateNormal];
+        [buttontmp setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        isChange = YES;
+    }
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

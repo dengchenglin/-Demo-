@@ -1,0 +1,22 @@
+//
+//  TicketAndDayModel.h
+//  HHY
+//
+//  Created by jiangjun on 14-5-23.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+@class DayModel;
+@class TicketModel;
+
+@interface TicketAndDayModel : NSObject
+@property(nonatomic,retain)DayModel *dayModel;
+@property(nonatomic,retain)TicketModel *ticketModel;
+@property(nonatomic,retain)NSDictionary *dictAmi;
+@property(nonatomic,retain)NSString *shipType;
+@property(nonatomic,copy)NSString *palceText;
+@property(nonatomic, retain)NSString *tax;
+
+-(NSDictionary *)getJasonDict;
+@end

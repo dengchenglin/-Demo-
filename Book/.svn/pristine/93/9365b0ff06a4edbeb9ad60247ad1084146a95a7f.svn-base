@@ -1,0 +1,16 @@
+//
+//  HQFRootViewController.h
+//  IBook
+//
+//  Created by qianfeng on 13-11-18.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "HQFReadProtocol.h"
+
+@interface HQFRootViewController : UIViewController <UIPageViewControllerDelegate,HQFReadProtocol>
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+
+@end

@@ -1,0 +1,21 @@
+//
+//  HQFDataViewController.h
+//  IBook
+//
+//  Created by qianfeng on 13-11-18.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "HQFShowViewController.h"
+
+@interface HQFDataViewController : UIViewController<UITextViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextView *myTextView;
+@property (strong, nonatomic) id dataObject;
+@property (nonatomic,assign) NSString * myChapterFirstId;
+@property (nonatomic,retain) NSString *myBookId;
+@property (nonatomic,retain) NSString *chapterContent;
+@property (nonatomic,assign) CGSize size;
+@property (nonatomic,assign) NSInteger chapter;
+@end

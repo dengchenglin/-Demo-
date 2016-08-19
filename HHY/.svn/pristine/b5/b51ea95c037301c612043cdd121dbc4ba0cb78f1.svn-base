@@ -1,0 +1,49 @@
+//
+//  TicketAndDayModel.m
+//  HHY
+//
+//  Created by jiangjun on 14-5-23.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "TicketAndDayModel.h"
+#import "DayModel.h"
+#import "TicketModel.h"
+
+@implementation TicketAndDayModel
+-(NSDictionary *)getJasonDict
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:[NSString stringWithFormat:@"%@%@", self.ticketModel.airLineCode, self.ticketModel.fltNo] forKey:@"flyNo"];//航班号
+    [dict setValue:self.ticketModel.airLineCode forKey:@"airCode"];//航空公司二字码
+    [dict setValue:[self.dictAmi objectForKey:@"bkClass"] forKey:@"space"];//舱位
+    [dict setValue:[self.ticketModel.maxPrice objectForKey:@"bkClass"] forKey:@"parentSpace"];//一级舱位
+    [dict setValue:self.ticketModel.adepCode forKey:@"adepCity"];//起飞城市
+    [dict setValue:self.ticketModel.destCode forKey:@"deptCity"];//到达城市
+    [dict setValue:@"NN" forKey:@"actionCode"];//行动代码
+    [dict setValue:@"1" forKey:@"number"];//人数
+    NSArray *array = [self.dayModel.description componentsSeparatedByString:@"-"];
+    NSString *tempString = [NSString stringWithFormat:@"%d-%d-%d",[[array objectAtIndex:0] intValue], [[array objectAtIndex:1] intValue], [[array objectAtIndex:2] intValue]];
+    [dict setValue:tempString forKey:@"flightDate"];//航班日期
+    [dict setValue:self.ticketModel.flyTime forKey:@"adepTime"]; //起飞时间
+    [dict setValue:self.ticketModel.arriveTime forKey:@"deptTime"];//到达时间
+    [dict setValue:[self.dictAmi objectForKey:@"disAmt"] forKey:@"bookPrice"];//预订价格
+    [dict setValue:@([[self.ticketModel.maxPrice objectForKey:@"disAmt"] intValue]) forKey:@"fullPrice"];//全价
+    [dict setValue:@([[self.ticketModel.minPrice objectForKey:@"disAmt"] intValue])  forKey:@"lowPrice"];//低价
+    [dict setValue:@(1) forKey:@"country"];//国内国际
+    [dict setValue:@([self.ticketModel.fuelFee intValue]) forKey:@"fuelFee"];	//燃油费
+    [dict setValue:@(self.ticketModel.departFee.intValue) forKey:@"capexFee"];	//机建费
+    [dict setValue:@([[self.ticketModel.maxPrice objectForKey:@"disAmt"] intValue]) forKey:@"issuePrice"];//出票价格
+    [dict setValue:@"" forKey:@"notLowReason"];//未选低价原因
+    [dict setValue:@(0) forKey:@"flyMileage"];//飞行里程
+    [dict setValue:self.ticketModel.planeModel forKey:@"planeModel"];//机型
+    [dict setValue:[NSString stringWithFormat:@"%@--%@", self.ticketModel.arriveTerminal, self.ticketModel.departTerminal] forKey:@"terminal"];//航站楼
+    [dict setValue:self.ticketModel.stops forKey:@"stop"];//经停
+    return dict;
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
+@end

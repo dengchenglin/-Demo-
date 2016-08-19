@@ -1,0 +1,59 @@
+//
+//  TicketModel.m
+//  HHY
+//
+//  Created by jiangjun on 14-4-29.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "TicketModel.h"
+
+@implementation TicketModel
+-(void)anasystring:(NSString *)string
+{
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    self.spaceAndPrice = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
+-(void)anasyDict:(NSDictionary *)temp
+{
+    self.adepCode = [temp objectForKey:@"adepCode"];
+    self.adepName = [temp objectForKey:@"adepName"];
+    self.arriveTime = [temp objectForKey:@"arriveTime"];
+    self.destName = [temp objectForKey:@"destName"];
+    self.airLineCode = [temp objectForKey:@"airLineCode"];
+    self.airLineName = [temp objectForKey:@"airLineName"];
+    self.fltNo = [temp objectForKey:@"fltNo"];
+    self.flyTime = [temp objectForKey:@"flyTime"];
+    self.operateCode = [temp objectForKey:@"operateCode"];
+    self.planeModel = [temp objectForKey:@"planeModel"];
+    self.spaceAndPrice = [temp objectForKey:@"spaceAndPrice"];
+    self.deptDate = [temp objectForKey:@"deptDate"];
+    self.arriveTerminal = [temp objectForKey:@"arriveTerminal"];
+    self.departTerminal = [temp objectForKey:@"departTerminal"];
+    self.fuelFee = [temp objectForKey:@"fuelFee"];
+    self.departFee = [temp objectForKey:@"departFee"];
+    self.stops = [temp objectForKey:@"stops"];
+    self.destCode = [temp objectForKey:@"destCode"];
+}
+
+-(void)paixu
+{
+    if (self.spaceAndPrice.count >0) {
+        self.minPrice = [self.spaceAndPrice objectAtIndex:0];
+        self.maxPrice = [self.spaceAndPrice objectAtIndex:0];
+        for (NSDictionary *dict in self.spaceAndPrice) {
+            if ([[self.minPrice objectForKey:@"disAmt"] intValue] > [[dict objectForKey:@"disAmt"] intValue]) {
+                self.minPrice = dict;
+            }
+            if ([[self.maxPrice objectForKey:@"disAmt"] intValue] < [[dict objectForKey:@"disAmt"] intValue]) {
+                self.maxPrice = dict;
+            }
+        }
+    }
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
+@end

@@ -1,0 +1,269 @@
+//
+//  TicketPayViewController.m
+//  HHY
+//
+//  Created by jiangjun on 14-5-29.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "TicketPayViewController.h"
+#import "CustomView.h"
+#import "ZhiFuButton.h"
+#import "OrderDetailCell.h"
+#import "TicketAndDayModel.h"
+#import "DayModel.h"
+#import "TicketModel.h"
+
+@interface TicketPayViewController ()
+
+@end
+
+@implementation TicketPayViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self initNav:@"订单支付"];
+    self.isHuiyuan = YES;
+    [self getLoadData];
+    [self createScreen];
+    [self createFootView];
+    [self createHeadView];
+}
+
+-(void)createRighteItem
+{
+    UIButton *phoneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    phoneButton.frame = CGRectMake(232, 0, 30, 44);
+    [phoneButton setImage:[UIImage imageNamed:@"playPhone"]forState:UIControlStateNormal];
+    [phoneButton addTarget:self action:@selector(playPhone) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *tempItem = [[UIBarButtonItem alloc] initWithCustomView:phoneButton];
+    
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(276, 0, 30, 44);
+    [rightButton setImage:[UIImage imageNamed:@"fhsy"]forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(returnRoot) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    UIBarButtonItem *flexright = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL];
+    [flexright setWidth:5];
+    self.navigationItem.rightBarButtonItems = @[rightItem, flexright, tempItem];
+}
+
+-(void)createScreen
+{
+    UILabel *lable = [AffUIToolBar lableCgrectmake:CGRectMake(0, 0, 320, 40) lableNametext:@"预定成功等待审批(或者支付)"];
+    lable.textAlignment = NSTextAlignmentCenter;
+    lable.textColor = [JJDevice colorWithR:114 G:167 B:220 A:1];
+    [self.view addSubview:lable];
+    
+    if (iPhone5) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 324, 568-64) style:UITableViewStylePlain];
+    }else{
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 324, 480-64) style:UITableViewStylePlain];
+    }
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+}
+
+#pragma tableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.airPlainArray.count+1;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellId = @"cell";
+    
+    OrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"OrderDetailCell" owner:self options:nil] lastObject];
+    }
+    if (indexPath.row==self.airPlainArray.count) {
+        [cell.timeLable removeFromSuperview];
+        cell.typeLable.textAlignment = NSTextAlignmentRight;
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"总额:¥%ld", self.allCount]];
+        [str addAttribute: NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(3, str.length-3)];
+        [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0] range:NSMakeRange(3, str.length-3)];
+        [str addAttribute: NSForegroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, 3)];
+        cell.typeLable.attributedText = str;
+    }else{
+        TicketAndDayModel *model = [self.airPlainArray objectAtIndex:indexPath.row];
+        cell.timeLable.text = model.dayModel.description;
+        cell.timeLable.font = FONT_12;
+        cell.typeLable.text = [NSString stringWithFormat:@"%@%@%@(%@) %@", model.ticketModel.airLineName, model.ticketModel.airLineCode, model.ticketModel.fltNo, model.ticketModel.planeModel, model.palceText];
+        cell.typeLable.font = FONT_12;
+    }
+    
+    return cell;
+}
+#pragma tableViewDelegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30.0f;
+}
+
+-(void)btnClick:(ZhiFuButton *)button
+{
+    NSLog(@"%ld", button.tag);
+}
+
+-(void)createFootView
+{
+    UIView *view = nil;
+    if (self.isHuiyuan) {
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 151)];
+    }else{
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 121)];
+    }
+    view.userInteractionEnabled = YES;
+    
+    for( int i=0; i<2; i++){
+        UIImageView *lineView1 = [AffUIToolBar imageviewRect:CGRectMake(0, i*19, 320, 1) andimage:[UIImage imageNamed:@"xian"]];
+        [view addSubview:lineView1];
+    }
+    
+    UILabel *lable = [AffUIToolBar lableCgrectmake:CGRectMake(0, 20, 320, 29) lableNametext:@"选择您的支付方式"];
+    lable.textAlignment = NSTextAlignmentCenter;
+    lable.backgroundColor = [UIColor whiteColor];
+    lable.textColor = [JJDevice colorWithR:89 G:149 B:216 A:1];
+    [view addSubview:lable];
+    
+    for (int i=0; i<2; i++) {
+        UIImageView *line1= [AffUIToolBar imageviewRect:CGRectMake(0, 50+i*10, 320, 1) andimage:[UIImage imageNamed:@"xian"]];
+        [view addSubview:line1];
+    }
+    
+    if (self.isHuiyuan) {
+        for (int i=0; i<2; i++) {
+            UIImageView *lineView1 = [AffUIToolBar imageviewRect:CGRectMake(20, i*30+89, 300, 1) andimage:[UIImage imageNamed:@"xian"]];
+            [view addSubview:lineView1];
+        }
+    }else{
+        UIImageView *lineView1 = [AffUIToolBar imageviewRect:CGRectMake(20, 89, 300, 1) andimage:[UIImage imageNamed:@"xian"]];
+        [view addSubview:lineView1];
+    }
+    
+    NSArray *imageArray = @[@"gongsishenpi", @"zhifubao", @"yinlian"];
+    NSArray *titleArray = @[@"公司审批", @"支付宝支付", @"银联支付"];
+    if (self.isHuiyuan) {
+        for (int i=0; i<3; i++) {
+            ZhiFuButton *button = [[ZhiFuButton alloc] initWithFrame:CGRectMake(0, i*30+60, 320, 30)];
+            button.tag = 100+i;
+            [button setHeadTitle:[titleArray objectAtIndex:i]];
+            [button setheadImage:[imageArray objectAtIndex:i]];
+            [button addTarget:self action:@selector(chosePayMethod:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:button];
+        }
+    }else{
+        for (int i=0; i<2; i++) {
+            ZhiFuButton *button = [[ZhiFuButton alloc] initWithFrame:CGRectMake(0, i*30+60, 320, 30)];
+            button.tag = 101+i;
+            [button setHeadTitle:[titleArray objectAtIndex:i+1]];
+            [button setheadImage:[imageArray objectAtIndex:i+1]];
+            [button addTarget:self action:@selector(chosePayMethod:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:button];
+        }
+    }
+    UIImageView *endLine = [AffUIToolBar imageviewRect:CGRectMake(0, view.frame.size.height, 320, 1) andimage:[UIImage imageNamed:@"xian"]];
+    [view addSubview:endLine];
+    
+    _tableView.tableFooterView = view;
+}
+
+-(void)createHeadView
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
+    view.backgroundColor = [UIColor clearColor];
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 29)];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    if (self.isHuiyuan) {
+        titleLable.text = @"预定成功等待审批(或者支付)";
+    }else{
+        titleLable.text = @"预定成功等待支付";
+    }
+    titleLable.textColor = [JJDevice colorWithR:85 G:148 B:216 A:1];
+    [view addSubview:titleLable];
+    UIImageView *blueLine = [AffUIToolBar imageviewRect:CGRectMake(0, 30, 320, 1) andimage:nil];
+    blueLine.backgroundColor = [UIColor blueColor];
+    [view addSubview:blueLine];
+    
+   _numLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, 300, 25)];
+    if (!self.orderNum) {
+        self.orderNum = @"";
+    }
+    _numLable.text = [NSString stringWithFormat:@"订单号: %@", self.orderNum];
+    _numLable.textColor = [JJDevice colorWithR:243 G:126 B:41 A:1];
+    _numLable.font = FONT_14;
+    [view addSubview:_numLable];
+    UIImageView *lineView = [AffUIToolBar imageviewRect:CGRectMake(0, 55, 320, 1) andimage:[UIImage imageNamed:@"xian"]];
+    [view addSubview:lineView];
+    
+    _tableView.tableHeaderView = view;
+}
+
+-(void)getLoadData
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSString *string = [self.jasonDict jsonEncodedKeyValueString];
+    [[HHYNetworkEngine sharedInstance] saveOrder:string block:^(NSError *error, id data) {
+        if (!error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                self.orderNum = [data objectForKey:@"orderNo"];
+            }else if([data isKindOfClass:[NSArray class]]){
+                self.orderNum = [[data objectAtIndex:0] objectForKey:@"orderNo"];
+            }
+            
+            _numLable.text = [NSString stringWithFormat:@"订单号:  %@", self.orderNum];
+            [_tableView reloadData];
+        }
+    }];
+}
+
+-(void)chosePayMethod:(UIButton *)button
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (button.tag == 100) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [[HHYNetworkEngine sharedInstance] examineApply:self.orderNum block:^(NSError *error, id data) {
+            NSLog(@"%@", data);
+        }];
+    }
+}
+
+-(void)playPhone
+{
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

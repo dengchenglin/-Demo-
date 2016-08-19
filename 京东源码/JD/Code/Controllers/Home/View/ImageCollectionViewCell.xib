@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImageCollectionViewCell" customModule="JD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXg-3I-tqM">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-zX-5G5">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="KbL-zX-5G5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0i1-Ls-Oak"/>
+                <constraint firstAttribute="bottom" secondItem="KbL-zX-5G5" secondAttribute="bottom" id="8VH-rI-Yef"/>
+                <constraint firstItem="vXg-3I-tqM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9Db-AQ-dcC"/>
+                <constraint firstItem="KbL-zX-5G5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="P19-fZ-xX1"/>
+                <constraint firstItem="KbL-zX-5G5" firstAttribute="width" secondItem="vXg-3I-tqM" secondAttribute="width" multiplier="0.6" id="Ywo-jC-41L"/>
+                <constraint firstAttribute="bottom" secondItem="vXg-3I-tqM" secondAttribute="bottom" id="ker-2g-rke"/>
+                <constraint firstAttribute="trailing" secondItem="vXg-3I-tqM" secondAttribute="trailing" id="sLG-ON-T2b"/>
+                <constraint firstItem="vXg-3I-tqM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sMq-lj-9ta"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="KbL-zX-5G5"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="0i1-Ls-Oak"/>
+                    <exclude reference="8VH-rI-Yef"/>
+                    <exclude reference="P19-fZ-xX1"/>
+                    <exclude reference="Ywo-jC-41L"/>
+                    <exclude reference="9Db-AQ-dcC"/>
+                    <exclude reference="ker-2g-rke"/>
+                    <exclude reference="sLG-ON-T2b"/>
+                    <exclude reference="sMq-lj-9ta"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="KbL-zX-5G5"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="0i1-Ls-Oak"/>
+                    <include reference="8VH-rI-Yef"/>
+                    <include reference="P19-fZ-xX1"/>
+                    <include reference="Ywo-jC-41L"/>
+                    <include reference="9Db-AQ-dcC"/>
+                    <include reference="ker-2g-rke"/>
+                    <include reference="sLG-ON-T2b"/>
+                    <include reference="sMq-lj-9ta"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="icon1ImageView" destination="vXg-3I-tqM" id="k93-zy-jjl"/>
+                <outlet property="icon2ImageView" destination="KbL-zX-5G5" id="u7w-YS-Rcg"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,55 @@
+//
+//  HQFDataViewController.m
+//  IBook
+//
+//  Created by qianfeng on 13-11-18.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import "HQFDataViewController.h"
+#import "ASIHTTPRequest.h"
+#import "GDataXMLNode.h"
+
+@interface HQFDataViewController ()
+- (void)requestURL;
+@end
+
+@implementation HQFDataViewController
+@synthesize myChapterFirstId;
+@synthesize myBookId;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    self.myTextView.editable = NO;
+    self.chapter = [myChapterFirstId intValue];
+    [self requestURL];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)requestURL
+{
+    NSString *url = [NSString stringWithFormat:@"http://c4.shuqireader.com/httpserver/filecache/get_book_content_%@_%d_1323360000_1_0.xml",myBookId,self.chapter];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    request.delegate = self;
+    [request startAsynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithData:[request responseData] options:0 error:nil];
+    NSArray *nodeArr = [doc nodesForXPath:@"/ChapterContent" error:nil];
+    self.chapterContent = [[nodeArr lastObject] stringValue];
+    //self.size = [self.chapterContent sizeWithFont:[UIFont systemFontOfSize:20.05] constrainedToSize:CGSizeMake(320, 48000)];
+    
+    self.myTextView.text = self.chapterContent;
+    
+    
+}
+@end

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EDB1AB79-A486-4463-9422-401BE469CB12</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HHY</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D0BE1EE3-2C70-49F7-8434-44DAFAF29C93</key>
+		<string>svn://192.168.1.100/IOSProject/Trunk/HHY</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HHY/HHY.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D0BE1EE3-2C70-49F7-8434-44DAFAF29C93</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>D0BE1EE3-2C70-49F7-8434-44DAFAF29C93</key>
+		<string>svn://192.168.1.100</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://192.168.1.100/IOSProject/Trunk/HHY/HHY.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D0BE1EE3-2C70-49F7-8434-44DAFAF29C93</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>IOSProject/Branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>IOSProject/Tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>IOSProject/Trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D0BE1EE3-2C70-49F7-8434-44DAFAF29C93</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HHY-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

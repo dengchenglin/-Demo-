@@ -1,0 +1,30 @@
+//
+//  HotelMenuViewCell.m
+//  HHY
+//
+//  Created by jiangjun on 14-4-25.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "HotelMenuViewCell.h"
+
+@implementation HotelMenuViewCell
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
+
+@end

@@ -1,0 +1,23 @@
+//
+//  TicketPayViewController.h
+//  HHY
+//
+//  Created by jiangjun on 14-5-29.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "RootViewController.h"
+
+@interface TicketPayViewController : RootViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *_tableView;
+}
+@property(nonatomic,retain)NSDictionary *jasonDict;
+@property(nonatomic,assign)NSInteger priceCount;
+@property(nonatomic,assign)NSInteger allCount;
+@property(nonatomic,retain)NSMutableArray *airPlainArray;
+@property(nonatomic,retain)NSMutableArray *passengerArray;
+@property(nonatomic,retain)UILabel *numLable;
+@property(nonatomic,copy)NSString *orderNum;
+@property(nonatomic,assign)BOOL isHuiyuan;
+@end

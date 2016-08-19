@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F2C0C281D004C4B008D79CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C0C271D004C4B008D79CA /* SystemConfiguration.framework */; };
+		8F2C0C2A1D004C60008D79CA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C0C291D004C60008D79CA /* libz.tbd */; };
+		8F2C0C2C1D004C67008D79CA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C0C2B1D004C67008D79CA /* libsqlite3.0.tbd */; };
+		8F2C0C2E1D004C73008D79CA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C0C2D1D004C73008D79CA /* libc++.tbd */; };
+		8F2C0C521D005ADC008D79CA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C0C511D005ADC008D79CA /* CoreTelephony.framework */; };
+		8F9A4B771CFDB2BE00704387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A4B761CFDB2BE00704387 /* main.m */; };
+		8F9A4B7A1CFDB2BE00704387 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A4B791CFDB2BE00704387 /* AppDelegate.m */; };
+		8F9A4B7D1CFDB2BE00704387 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9A4B7C1CFDB2BE00704387 /* ViewController.m */; };
+		8F9A4B801CFDB2BE00704387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A4B7E1CFDB2BE00704387 /* Main.storyboard */; };
+		8F9A4B821CFDB2BE00704387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A4B811CFDB2BE00704387 /* Assets.xcassets */; };
+		8F9A4B851CFDB2BE00704387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9A4B831CFDB2BE00704387 /* LaunchScreen.storyboard */; };
+		8FD26A2F1D0D0FFC00A9EBE2 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD26A2B1D0D0FFC00A9EBE2 /* libWeChatSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8F2C0C271D004C4B008D79CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8F2C0C291D004C60008D79CA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8F2C0C2B1D004C67008D79CA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		8F2C0C2D1D004C73008D79CA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8F2C0C511D005ADC008D79CA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8F9A4B721CFDB2BE00704387 /* 微信支付Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微信支付Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F9A4B761CFDB2BE00704387 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F9A4B781CFDB2BE00704387 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8F9A4B791CFDB2BE00704387 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8F9A4B7B1CFDB2BE00704387 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8F9A4B7C1CFDB2BE00704387 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8F9A4B7F1CFDB2BE00704387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F9A4B811CFDB2BE00704387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F9A4B841CFDB2BE00704387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F9A4B861CFDB2BE00704387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FD26A2B1D0D0FFC00A9EBE2 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		8FD26A2C1D0D0FFC00A9EBE2 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		8FD26A2D1D0D0FFC00A9EBE2 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		8FD26A2E1D0D0FFC00A9EBE2 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F9A4B6F1CFDB2BE00704387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F2C0C521D005ADC008D79CA /* CoreTelephony.framework in Frameworks */,
+				8F2C0C2E1D004C73008D79CA /* libc++.tbd in Frameworks */,
+				8FD26A2F1D0D0FFC00A9EBE2 /* libWeChatSDK.a in Frameworks */,
+				8F2C0C2C1D004C67008D79CA /* libsqlite3.0.tbd in Frameworks */,
+				8F2C0C2A1D004C60008D79CA /* libz.tbd in Frameworks */,
+				8F2C0C281D004C4B008D79CA /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F2C0C1F1D004BF4008D79CA /* WeixinPaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				8FD26A2B1D0D0FFC00A9EBE2 /* libWeChatSDK.a */,
+				8FD26A2C1D0D0FFC00A9EBE2 /* WechatAuthSDK.h */,
+				8FD26A2D1D0D0FFC00A9EBE2 /* WXApi.h */,
+				8FD26A2E1D0D0FFC00A9EBE2 /* WXApiObject.h */,
+			);
+			path = WeixinPaySDK;
+			sourceTree = "<group>";
+		};
+		8F9A4B691CFDB2BE00704387 = {
+			isa = PBXGroup;
+			children = (
+				8F2C0C511D005ADC008D79CA /* CoreTelephony.framework */,
+				8F2C0C2D1D004C73008D79CA /* libc++.tbd */,
+				8F2C0C2B1D004C67008D79CA /* libsqlite3.0.tbd */,
+				8F2C0C291D004C60008D79CA /* libz.tbd */,
+				8F2C0C271D004C4B008D79CA /* SystemConfiguration.framework */,
+				8F2C0C1F1D004BF4008D79CA /* WeixinPaySDK */,
+				8F9A4B741CFDB2BE00704387 /* 微信支付Demo */,
+				8F9A4B731CFDB2BE00704387 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F9A4B731CFDB2BE00704387 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F9A4B721CFDB2BE00704387 /* 微信支付Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F9A4B741CFDB2BE00704387 /* 微信支付Demo */ = {
+			isa = PBXGroup;
+			children = (
+				8F9A4B781CFDB2BE00704387 /* AppDelegate.h */,
+				8F9A4B791CFDB2BE00704387 /* AppDelegate.m */,
+				8F9A4B7B1CFDB2BE00704387 /* ViewController.h */,
+				8F9A4B7C1CFDB2BE00704387 /* ViewController.m */,
+				8F9A4B7E1CFDB2BE00704387 /* Main.storyboard */,
+				8F9A4B811CFDB2BE00704387 /* Assets.xcassets */,
+				8F9A4B831CFDB2BE00704387 /* LaunchScreen.storyboard */,
+				8F9A4B861CFDB2BE00704387 /* Info.plist */,
+				8F9A4B751CFDB2BE00704387 /* Supporting Files */,
+			);
+			path = "微信支付Demo";
+			sourceTree = "<group>";
+		};
+		8F9A4B751CFDB2BE00704387 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F9A4B761CFDB2BE00704387 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F9A4B711CFDB2BE00704387 /* 微信支付Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F9A4B891CFDB2BE00704387 /* Build configuration list for PBXNativeTarget "微信支付Demo" */;
+			buildPhases = (
+				8F9A4B6E1CFDB2BE00704387 /* Sources */,
+				8F9A4B6F1CFDB2BE00704387 /* Frameworks */,
+				8F9A4B701CFDB2BE00704387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "微信支付Demo";
+			productName = "微信支付Demo";
+			productReference = 8F9A4B721CFDB2BE00704387 /* 微信支付Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F9A4B6A1CFDB2BE00704387 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = dengchenglin;
+				TargetAttributes = {
+					8F9A4B711CFDB2BE00704387 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 8F9A4B6D1CFDB2BE00704387 /* Build configuration list for PBXProject "微信支付Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F9A4B691CFDB2BE00704387;
+			productRefGroup = 8F9A4B731CFDB2BE00704387 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F9A4B711CFDB2BE00704387 /* 微信支付Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F9A4B701CFDB2BE00704387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F9A4B851CFDB2BE00704387 /* LaunchScreen.storyboard in Resources */,
+				8F9A4B821CFDB2BE00704387 /* Assets.xcassets in Resources */,
+				8F9A4B801CFDB2BE00704387 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F9A4B6E1CFDB2BE00704387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F9A4B7D1CFDB2BE00704387 /* ViewController.m in Sources */,
+				8F9A4B7A1CFDB2BE00704387 /* AppDelegate.m in Sources */,
+				8F9A4B771CFDB2BE00704387 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8F9A4B7E1CFDB2BE00704387 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F9A4B7F1CFDB2BE00704387 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8F9A4B831CFDB2BE00704387 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F9A4B841CFDB2BE00704387 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F9A4B871CFDB2BE00704387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8F9A4B881CFDB2BE00704387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F9A4B8A1CFDB2BE00704387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "微信支付Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/WeixinPaySDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dengchenglin.----Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8F9A4B8B1CFDB2BE00704387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "微信支付Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDKExport",
+					"$(PROJECT_DIR)/WeixinPaySDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dengchenglin.----Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F9A4B6D1CFDB2BE00704387 /* Build configuration list for PBXProject "微信支付Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F9A4B871CFDB2BE00704387 /* Debug */,
+				8F9A4B881CFDB2BE00704387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F9A4B891CFDB2BE00704387 /* Build configuration list for PBXNativeTarget "微信支付Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F9A4B8A1CFDB2BE00704387 /* Debug */,
+				8F9A4B8B1CFDB2BE00704387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F9A4B6A1CFDB2BE00704387 /* Project object */;
+}

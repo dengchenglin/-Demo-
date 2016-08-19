@@ -1,0 +1,185 @@
+//
+//  HHYNetworkEngine+Detail.m
+//  HHY
+//
+//  Created by 谈文钊 on 14-5-31.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "HHYNetworkEngine+Detail.h"
+#import "Passenger.h"
+#import "PersonModel.h"
+
+#define kTokenSaveKey @"HHY-Token"
+
+@implementation HHYNetworkEngine (Detail)
+
+- (NSString *)getToken
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kTokenSaveKey];
+}
+
+- (void)saveToken:(NSString *)token
+{
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:kTokenSaveKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)path:(NSString *)path needToken:(BOOL)needToken
+{
+    return needToken ? [NSString stringWithFormat:@"%@/%@", path, [self getToken]] : path;
+}
+
+- (BOOL)checkLogin
+{
+    return [self getToken] != nil;
+}
+
+- (void)logOut:(HHYResponseBlock)block
+{
+    [self saveToken:nil];
+    block(nil, nil);
+}
+
+- (void)login:(NSString *)username password:(NSString *)password block:(HHYResponseBlock)block
+{
+    NSString *path = [@"user/login" stringByAppendingFormat:@"/%@/%@", username, password];
+    [self getDataForPath:path
+                  params:nil block:^(NSError *error, id data) {
+                      if (!error) {
+                          [self saveToken:data];
+                      }
+                      block(error, data);
+                  }];
+}
+
+- (void)registerUser:(NSDictionary *)dict block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"user/register" needToken:NO]
+                   params:dict block:^(NSError *error, id data) {
+                       block(error, data);
+                   }];
+}
+
+- (void)queryOneUser:(HHYResponseBlock)block
+{
+    [self postDataForPath:[self path:@"user/queryOneUser" needToken:YES] params:nil block:^(NSError *error, id data) {
+        PersonModel *p = nil;
+        if (!error) {
+            p = [[PersonModel alloc] initWithDictionary:data error:nil];
+        }
+        block(error, p);
+    }];
+}
+
+- (void)updateUserInfo:(NSDictionary *)userInfo block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"user/update" needToken:YES] params:userInfo block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+- (void)queryPassengers:(HHYResponseBlock)block
+{
+    [self postDataForPath:[self path:@"cycjr/query" needToken:YES] params:nil block:^(NSError *error, id data) {
+        NSMutableArray *passagers = nil;
+        if (!error) {
+            passagers = [NSMutableArray arrayWithCapacity:[data count]];
+            for (NSDictionary *dic in data) {
+                Passenger *p = [[Passenger alloc] initWithDictionary:dic error:&error];
+                [passagers addObject:p];
+            }
+        }
+        block(error, passagers);
+    }];
+}
+
+- (void)findOnePassenger:(NSString *)passengerId block:(HHYResponseBlock)block
+{
+    [self postDataForPath:[self path:@"cycjr/findOnePassenger" needToken:YES] params:@{@"id": passengerId} block:^(NSError *error, id data) {
+        
+    }];
+}
+
+- (void)addPassenger:(NSDictionary *)passengerInfo block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"cycjr/addPassenger" needToken:YES] params:passengerInfo block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+- (void)updatePassenger:(NSDictionary *)passengerInfo block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"cycjr/update" needToken:YES] params:passengerInfo block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+- (void)deletePassenger:(NSString *)passengerId block:(HHYResponseBlock)block
+{
+    NSString *path = [[self path:@"cycjr/remove" needToken:YES] stringByAppendingFormat:@"/%@", passengerId];
+    [self postURLDataForPath:path params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+- (void)queryCities:(NSInteger)type block:(HHYResponseBlock)block
+{
+    NSString *path = [[self path:@"cities/query" needToken:NO] stringByAppendingFormat:@"/%ld", type];
+    [self postURLDataForPath:path params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)queryAirTicket:(NSString *)tickUrl block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[[self path:@"queryTicket/query" needToken:NO] stringByAppendingFormat:@"/%@", tickUrl] params:nil block:^(NSError *error, id data) {
+        block(error, data);
+    }];
+}
+
+-(void)saveOrder:(NSString *)string block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"order/saveOrder" needToken:YES] params:@{@"jsonOrder": string} block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)queryAirPlainOrder:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"order/queryOrder" needToken:YES] params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)queryOrderDetail:(NSString *)orderNum block:(HHYResponseBlock)block
+{
+    NSString *path = [[self path:@"order/orderDetail" needToken:YES] stringByAppendingFormat:@"/%@", orderNum];
+    [self postURLDataForPath:path params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)orderChange:(NSDictionary *)dict block:(HHYResponseBlock)block
+{
+    [self postURLDataForPath:[self path:@"order/orderChange" needToken:YES] params:dict block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)examineApply:(NSString *)orderNum block:(HHYResponseBlock)block
+{
+    NSString *path = [[self path:@"examine/apply" needToken:YES] stringByAppendingFormat:@"/%@", orderNum];
+    [self postURLDataForPath:path params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+
+-(void)tgqrule:(NSString *)airCode andSpace:(NSString *)space block:(HHYResponseBlock)block
+{
+    NSString *path = [[self path:@"tgqruler/query" needToken:NO] stringByAppendingFormat:@"/%@/%@", airCode, space];
+    [self postURLDataForPath:path params:nil block:^(NSError *error, id data) {
+        block(error,data);
+    }];
+}
+@end

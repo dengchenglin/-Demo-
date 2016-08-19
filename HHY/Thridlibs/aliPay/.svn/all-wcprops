@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay
+END
+AlixPayResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/AlixPayResult.m
+END
+DataSigner.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/DataSigner.h
+END
+PartnerConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/PartnerConfig.h
+END
+AlixPayOrder.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/AlixPayOrder.h
+END
+AlixLibService.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/AlixLibService.h
+END
+DataVerifier.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/DataVerifier.h
+END
+AlixPayResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/AlixPayResult.h
+END
+AlixPayOrder.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dev/!svn/ver/3049/edm/trunk/TdpViOS/PlayBuy/PlayBuy/aliPay/AlixPayOrder.m
+END

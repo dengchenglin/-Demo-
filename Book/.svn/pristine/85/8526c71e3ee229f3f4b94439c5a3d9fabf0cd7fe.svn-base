@@ -1,0 +1,21 @@
+//
+//  HQFModelController.h
+//  IBook
+//
+//  Created by qianfeng on 13-11-18.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class HQFDataViewController;
+
+@interface HQFModelController : NSObject <UIPageViewControllerDataSource>
+{
+    NSUInteger myIndex;
+}
+
+- (HQFDataViewController *)viewControllerAtIndex:(NSUInteger)index;
+- (NSUInteger)indexOfViewController:(HQFDataViewController *)viewController;
+
+@end

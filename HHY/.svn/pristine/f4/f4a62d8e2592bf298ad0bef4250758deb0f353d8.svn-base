@@ -1,0 +1,26 @@
+//
+//  AddPlainRangeViewController.h
+//  HHY
+//
+//  Created by jiangjun on 14-5-21.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "RootViewController.h"
+#import "ChangYongPersonViewController.h"
+@class LinkPeopleModel;
+@protocol AddPlainRangeViewControllerDelegate <NSObject>
+-(void)change;
+@end
+@interface AddPlainRangeViewController : RootViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ChangYongPersonViewControllerDelegate,UIActionSheetDelegate>
+{
+    UITableView *_tableView;
+}
+@property(nonatomic,retain)UILabel *priceLable;
+@property(nonatomic,retain)LinkPeopleModel *linkPeople;
+@property(nonatomic,assign)NSInteger allCount;
+@property(nonatomic,retain)NSIndexPath *textFieldIndexPath;
+-(void)addOneAirPlain:(id)obj;
+-(void)addOneAirPeople:(id)obj;
+-(void)removeAllArray;
+@end

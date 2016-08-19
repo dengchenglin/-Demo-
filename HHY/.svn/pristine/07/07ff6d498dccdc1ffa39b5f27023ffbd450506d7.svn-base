@@ -1,0 +1,22 @@
+//
+//  ChangYongPersonViewController.h
+//  HHY
+//
+//  Created by jiangjun on 14-4-24.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "RootViewController.h"
+@class CJRModel;
+@protocol ChangYongPersonViewControllerDelegate <NSObject>
+-(void)addCJR:(CJRModel *)model;
+@end
+
+@interface ChangYongPersonViewController : RootViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView *_tableView;
+}
+@property(nonatomic,assign)BOOL isOrderTicket;
+@property(nonatomic,retain)NSMutableArray *dataArray;
+@property(nonatomic,assign)id<ChangYongPersonViewControllerDelegate>target;
+@end

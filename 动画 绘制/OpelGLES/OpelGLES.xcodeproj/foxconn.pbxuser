@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* OpelGLESAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 630}}";
+			sepNavSelRange = "{503, 52}";
+			sepNavVisRange = "{0, 746}";
+		};
+	};
+	1D3623250D0F684500981E51 /* OpelGLESAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1247.41, 2667}}";
+			sepNavSelRange = "{730, 1}";
+			sepNavVisRange = "{350, 1004}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* OpelGLES */ = {
+		activeExec = 0;
+		executables = (
+			20E43235134EE9180035C244 /* OpelGLES */,
+		);
+	};
+	208B5AC01353CFBB00F7B19F /* LeftTool.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 567}}";
+			sepNavSelRange = "{398, 0}";
+			sepNavVisRange = "{18, 488}";
+			sepNavWindowFrame = "{{207, 106}, {1176, 741}}";
+		};
+	};
+	208B5AC11353CFBB00F7B19F /* LeftTool.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2499}}";
+			sepNavSelRange = "{2014, 0}";
+			sepNavVisRange = "{1691, 936}";
+			sepNavWindowFrame = "{{264, 59}, {1176, 741}}";
+		};
+	};
+	20901A411358347500975AF8 /* PreviewImage.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 945}}";
+			sepNavSelRange = "{773, 0}";
+			sepNavVisRange = "{277, 683}";
+		};
+	};
+	20901A421358347500975AF8 /* PreviewImage.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2373}}";
+			sepNavSelRange = "{409, 0}";
+			sepNavVisRange = "{1382, 827}";
+			sepNavWindowFrame = "{{15, 137}, {1290, 736}}";
+		};
+	};
+	209206CA1394C3E000FACAE2 /* RightTool.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 548}}";
+			sepNavSelRange = "{159, 0}";
+			sepNavVisRange = "{0, 211}";
+		};
+	};
+	209206CB1394C3E000FACAE2 /* RightTool.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1218}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 703}";
+		};
+	};
+	209247D4134EF44D00FA7EE7 /* QuartzFunView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1701}}";
+			sepNavSelRange = "{1649, 11}";
+			sepNavVisRange = "{537, 615}";
+			sepNavWindowFrame = "{{38, 111}, {1176, 741}}";
+		};
+	};
+	209247D5134EF44D00FA7EE7 /* QuartzFunView.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{2368, 120}\";\n            s = 0;\n        },\n                {\n            r = \"{5969, 157}\";\n            s = 0;\n        },\n                {\n            r = \"{9033, 49}\";\n            s = 0;\n        },\n                {\n            r = \"{9138, 1426}\";\n            s = 0;\n        },\n                {\n            r = \"{10616, 6}\";\n            s = 0;\n        },\n                {\n            r = \"{10638, 375}\";\n            s = 0;\n        },\n                {\n            r = \"{11029, 1}\";\n            s = 0;\n        },\n                {\n            r = \"{11271, 154}\";\n            s = 0;\n        },\n                {\n            r = \"{11502, 76}\";\n            s = 0;\n        },\n                {\n            r = \"{11652, 372}\";\n            s = 0;\n        },\n                {\n            r = \"{12077, 35}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 12119}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1334, 6090}}";
+			sepNavSelRange = "{3932, 0}";
+			sepNavVisRange = "{3296, 96}";
+			sepNavWindowFrame = "{{256, 137}, {1176, 741}}";
+		};
+	};
+	2093B0DF135C3CE400C35E2A /* BottomTool.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 588}}";
+			sepNavSelRange = "{394, 25}";
+			sepNavVisRange = "{0, 504}";
+		};
+	};
+	2093B0E0135C3CE400C35E2A /* BottomTool.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1722}}";
+			sepNavSelRange = "{1213, 0}";
+			sepNavVisRange = "{426, 1161}";
+			sepNavWindowFrame = "{{15, 137}, {1290, 736}}";
+		};
+	};
+	2093EF1313528DD20077696D /* Setting.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1323}}";
+			sepNavSelRange = "{1550, 18}";
+			sepNavVisRange = "{206, 767}";
+			sepNavWindowFrame = "{{373, 137}, {949, 735}}";
+		};
+	};
+	2093EF1413528DD20077696D /* Setting.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2835}}";
+			sepNavSelRange = "{632, 8}";
+			sepNavVisRange = "{375, 812}";
+			sepNavWindowFrame = "{{84, 75}, {949, 735}}";
+		};
+	};
+	2093F3861353123C0077696D /* SettingProtocol.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 548}}";
+			sepNavSelRange = "{189, 0}";
+			sepNavVisRange = "{0, 284}";
+			sepNavWindowFrame = "{{38, 116}, {1290, 736}}";
+		};
+	};
+	20965A841355531B005C0B60 /* SettingView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 672}}";
+			sepNavSelRange = "{557, 0}";
+			sepNavVisRange = "{136, 515}";
+			sepNavWindowFrame = "{{38, 111}, {1176, 741}}";
+		};
+	};
+	20965A851355531B005C0B60 /* SettingView.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{436, 1369}\";\n            s = 0;\n        },\n                {\n            r = \"{1869, 659}\";\n            s = 0;\n        },\n                {\n            r = \"{2566, 120}\";\n            s = 0;\n        },\n                {\n            r = \"{2854, 95}\";\n            s = 0;\n        },\n                {\n            r = \"{2970, 67}\";\n            s = 0;\n        },\n                {\n            r = \"{3122, 1220}\";\n            s = 0;\n        },\n                {\n            r = \"{4411, 1}\";\n            s = 0;\n        },\n                {\n            r = \"{4481, 1}\";\n            s = 0;\n        },\n                {\n            r = \"{4555, 1}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 4606}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1071}}";
+			sepNavSelRange = "{261, 0}";
+			sepNavVisRange = "{440, 642}";
+			sepNavWindowFrame = "{{150, 61}, {1290, 736}}";
+		};
+	};
+	20965E4E13557861005C0B60 /* CCAtlasNode.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 4221}}";
+			sepNavSelRange = "{3984, 35}";
+			sepNavVisRange = "{3845, 401}";
+		};
+	};
+	20965E5813557861005C0B60 /* CCDirector.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 3991}}";
+			sepNavSelRange = "{2736, 33}";
+			sepNavVisRange = "{2024, 1302}";
+		};
+	};
+	20965E5913557861005C0B60 /* CCDirector.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 6890}}";
+			sepNavSelRange = "{2426, 10}";
+			sepNavVisRange = "{1905, 1245}";
+		};
+	};
+	20965ED113557861005C0B60 /* CGPointExtension.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 2119}}";
+			sepNavSelRange = "{1428, 48}";
+			sepNavVisRange = "{0, 1556}";
+		};
+	};
+	20E43235134EE9180035C244 /* OpelGLES */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = OpelGLES;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	20E43242134EE9250035C244 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	20E43243134EE9250035C244 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	20E4325C134EEB770035C244 /* Constants.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1134}}";
+			sepNavSelRange = "{120, 0}";
+			sepNavVisRange = "{13, 308}";
+			sepNavWindowFrame = "{{644, -11}, {1176, 741}}";
+		};
+	};
+	20E4325D134EEBBE0035C244 /* UIColor_Random.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 548}}";
+			sepNavSelRange = "{119, 0}";
+			sepNavVisRange = "{0, 151}";
+			sepNavWindowFrame = "{{15, 138}, {949, 735}}";
+		};
+	};
+	20E4325E134EEBCE0035C244 /* UIColor_Random.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 548}}";
+			sepNavSelRange = "{112, 21}";
+			sepNavVisRange = "{0, 486}";
+		};
+	};
+	28D7ACF60DDB3853001CB0EB /* OpelGLESViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1080, 1827}}";
+			sepNavSelRange = "{993, 0}";
+			sepNavVisRange = "{853, 1167}";
+			sepNavWindowFrame = "{{245, 70}, {1176, 741}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* OpelGLESViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{907, 47}\";\n            s = 0;\n        },\n                {\n            r = \"{991, 27}\";\n            s = 0;\n        },\n                {\n            r = \"{1078, 381}\";\n            s = 0;\n        },\n                {\n            r = \"{1505, 123}\";\n            s = 0;\n        },\n                {\n            r = \"{1743, 256}\";\n            s = 0;\n        },\n                {\n            r = \"{2107, 259}\";\n            s = 0;\n        },\n                {\n            r = \"{2403, 790}\";\n            s = 0;\n        },\n                {\n            r = \"{3247, 470}\";\n            s = 0;\n        },\n                {\n            r = \"{3776, 454}\";\n            s = 0;\n        },\n                {\n            r = \"{4308, 97}\";\n            s = 0;\n        },\n                {\n            r = \"{4451, 395}\";\n            s = 0;\n        },\n                {\n            r = \"{4914, 441}\";\n            s = 0;\n        },\n                {\n            r = \"{6384, 1468}\";\n            s = 0;\n        },\n                {\n            r = \"{8423, 813}\";\n            s = 0;\n        },\n                {\n            r = \"{9414, 130}\";\n            s = 0;\n        },\n                {\n            r = \"{9581, 155}\";\n            s = 0;\n        },\n                {\n            r = \"{9762, 346}\";\n            s = 0;\n        },\n                {\n            r = \"{10129, 255}\";\n            s = 0;\n        },\n                {\n            r = \"{10444, 357}\";\n            s = 0;\n        },\n                {\n            c =             (\n                                {\n                    l = \"CGFloat x\";\n                    r = \"{11545, 13}\";\n                    s = 1;\n                },\n                                {\n                    l = \"CGFloat y\";\n                    r = \"{11560, 13}\";\n                    s = 1;\n                },\n                                {\n                    l = \"CGFloat width\";\n                    r = \"{11575, 17}\";\n                    s = 1;\n                },\n                                {\n                    l = \"CGFloat height\";\n                    r = \"{11594, 18}\";\n                    s = 1;\n                }\n            );\n            r = \"{11041, 1022}\";\n            s = 0;\n        },\n                {\n            r = \"{12138, 51}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 12196}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1095.69, 3129}}";
+			sepNavSelRange = "{1628, 0}";
+			sepNavVisRange = "{1334, 776}";
+			sepNavWindowFrame = "{{247, 84}, {949, 735}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 20E43235134EE9180035C244 /* OpelGLES */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* OpelGLES */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* OpelGLES */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 20E43243134EE9250035C244 /* Code sense */;
+		executables = (
+			20E43235134EE9180035C244 /* OpelGLES */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					48,
+					916,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					876,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 329109003;
+			PBXWorkspaceStateSaveDate = 329109003;
+		};
+		sourceControlManager = 20E43242134EE9250035C244 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 567}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 358}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* OpelGLES_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 496}}";
+			sepNavSelRange = "{149, 0}";
+			sepNavVisRange = "{0, 185}";
+			sepNavWindowFrame = "{{84, 74}, {1290, 736}}";
+		};
+	};
+	8D1107310486CEB800E47090 /* OpelGLES-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 138}, {949, 735}}";
+		};
+	};
+}

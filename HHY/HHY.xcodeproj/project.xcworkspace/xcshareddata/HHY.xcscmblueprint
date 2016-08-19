@@ -1,0 +1,47 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "ff1afa1e-96ac-a84e-890a-4c161eb874be++1745",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "b3ea32e5-604c-4fca-b5db-6ae888a3e4b3++9256" : {
+
+    },
+    "ff1afa1e-96ac-a84e-890a-4c161eb874be++1745" : {
+
+    },
+    "D0BE1EE3-2C70-49F7-8434-44DAFAF29C93" : {
+      "DVTSourceControlWorkingCopyRepositoryBranchesLocationKey" : "IOSProject\/Branches",
+      "DVTSourceControlWorkingCopyRepositoryTagsLocationKey" : "IOSProject\/Tags",
+      "DVTSourceControlWorkingCopyRepositoryPrimaryBranchLocationKey" : "IOSProject\/Trunk"
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "b3ea32e5-604c-4fca-b5db-6ae888a3e4b3++9256" : 0,
+    "ff1afa1e-96ac-a84e-890a-4c161eb874be++1745" : 0,
+    "D0BE1EE3-2C70-49F7-8434-44DAFAF29C93" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EDB1AB79-A486-4463-9422-401BE469CB12",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "b3ea32e5-604c-4fca-b5db-6ae888a3e4b3++9256" : "HHY\/Thridlibs\/SDWebImage",
+    "ff1afa1e-96ac-a84e-890a-4c161eb874be++1745" : "HHY",
+    "D0BE1EE3-2C70-49F7-8434-44DAFAF29C93" : "HHY-iOS"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HHY",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HHY.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.100",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D0BE1EE3-2C70-49F7-8434-44DAFAF29C93"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/yangj.5166.info\/1000phone",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b3ea32e5-604c-4fca-b5db-6ae888a3e4b3++9256"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.100",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ff1afa1e-96ac-a84e-890a-4c161eb874be++1745"
+    }
+  ]
+}

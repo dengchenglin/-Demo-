@@ -1,0 +1,22 @@
+//
+//  HQFThreeViewController.h
+//  IOS
+//
+//  Created by qianfeng on 13-11-7.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HQFThreeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    NSString *bookName;
+    NSString *bookId;
+    NSString *chapterId;
+    NSString *bookAouter;
+    NSString *bookType;
+}
+- (IBAction)bianJiBtn:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *shuJiaTableView;
+
+@end

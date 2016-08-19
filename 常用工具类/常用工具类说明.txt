@@ -1,0 +1,21 @@
+1：SDWebImage，UIImageView+WebCache加载一张图片。                
+2：UIViewExt用于定位坐标很有用，可以直接拿到bottom,top,left,right.
+3：CustomCatagory，是个类目，里面有navigationBar和UINavigationController的两种系统版本下自定义navigationBar背景图片方法，用于自定义navigationBar背景图片。
+4：UIUtils工具类，里面我写了四个方法，一个获取documents下的文件路径，一个将NSDate类型转化成字符串类型，一个将字符串转化成NSDate类型，还有一个将传进来的一个评分字符串分割开成两个，放在数组中，用于显示两个不同字体类型的评分。
+5：CONSTS常量类，里面存放的是整个项目中需要使用的常量，写成宏形式。
+6：UIFactory里面自定义了button类型，两种常用button样式。
+7：JSONKit类用于json数据解析
+8：ASIHTTPRequest开源库，用于请求网络，需要依赖这五个系统自带库CFNetwork, SystemConfiguration, MobileCoreServices, 和 libz、libxml2。
+9: DataSevrice网络请求类，分GET和POST请求两种方式，使用HTTP请求网络，使用ASIFormDataRequest类,需要一个url参数，当使用GET请求时候，不需要字典参数，增加一个请求头，当使用POST请求时候需要一个字典参数，通过键key发送值。ASIFormDataRequest对象 使用block请求数据，判断版本，5.0以上使用ios5自带的json解析类NSJSONSerialization，5.0版本之下使用JSONKit类，请求之后，使用block回调。如果请求失败，返回请求失败。
+10：转化成model对象类，将请求下来的网络数据字典转化成model对象。方便在其他类之间进行数据传输。
+11：自定了一个单例类，将项目中需要在控制器之间传输的数据存储起来，方便调用。
+12:使用OpenFlow开源框架，用于显示首页的图片要实现效果，在AFItemView类里面设置了高清和低清两种样式，实现里面三个代理方法，一个用于图片切换时改变，一个用于请求加载图片，通过_operationQueue创建一个线程来进行加载，因为如果都在主线程进行图片加载，可能会造成线程堵塞。
+13：EGORefreshTableHeaderView用于上拉下拉刷新，实现里面的几个代理方法，当手指放开时候会去调用加载数据代理方法。
+
+小技巧:在Mtime-Prefix.pch里导入的类.h文件在整个项目中都可以使用。
+      在Mtime-Info.plist文件里可以更改stateBar样式，有三种。
+      在Localizations里可以跟改本地化，可以设置多种语言，在硬件里也要做相应设置。
+      按住option+command+run可以添加变量用于定位错误所在。
+      在项目中最好打开静态分析器，会提示那里有内存泄露，当然也不准确，一定要记得管理内存。
+      遇到bug或直接崩溃，如果报的是exc-bad-access那么意味着在之前已经将对象释放了，而确又在后面使用它，所以要往上逆推寻找。调bug几种常用方法，打断点一步一步寻找，打印，包括数据，引用计数，暂时屏蔽一部分代码，一部分一部分寻找。
+

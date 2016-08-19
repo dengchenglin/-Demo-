@@ -1,0 +1,64 @@
+//
+//  HQFCommendView.m
+//  IOS
+//
+//  Created by qianfeng on 13-11-8.
+//  Copyright (c) 2013年 黄庆丰. All rights reserved.
+//
+
+#import "HQFCommendView.h"
+#import "HQFAppDelegate.h"
+#import "HQFBookModel.h"
+
+@implementation HQFCommendView
+@synthesize bookImage;
+@synthesize bookName;
+@synthesize auther;
+@synthesize jianJie;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        HQFAppDelegate *dele = [UIApplication sharedApplication].delegate;
+        int a = arc4random()%60;
+        HQFBookModel *model = [dele.dataArr objectAtIndex:a];
+        
+        bookImage = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 90)];
+        bookImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgurl]]];
+        bookName = [[UILabel alloc]initWithFrame:CGRectMake(90, 10, 250, 20)];
+        bookName.backgroundColor = [UIColor clearColor];
+        bookName.text = model.bookTitle;
+        bookName.textColor = [UIColor colorWithRed:46/255.0 green:124/255.0 blue:2/255.0 alpha:1];
+        auther = [[UILabel alloc]initWithFrame:CGRectMake(90, 30, 120, 15)];
+        auther.backgroundColor = [UIColor clearColor];
+        auther.text = [NSString stringWithFormat:@"作者: %@",model.bookArtist];
+        auther.font = [UIFont systemFontOfSize:11];
+        jianJie = [[UILabel alloc]initWithFrame:CGRectMake(90, 45, 230, 35)];
+        jianJie.backgroundColor= [UIColor clearColor];
+        jianJie.text = [NSString stringWithFormat:@"简介: %@",model.bookDescription];
+        jianJie.numberOfLines = 0;
+        jianJie.font = [UIFont systemFontOfSize:11];
+        self.bookId = model.bookId;
+        
+        
+        
+        [self addSubview:bookImage];
+        [self addSubview:bookName];
+        [self addSubview:auther];
+        [self addSubview:jianJie];
+        
+        }
+    return self;
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

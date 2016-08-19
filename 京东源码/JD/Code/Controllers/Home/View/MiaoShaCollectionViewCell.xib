@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MiaoShaCollectionViewCell" customModule="JD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="90" height="100"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSA-Ta-3a9">
+                        <rect key="frame" x="10" y="10" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="VEj-uw-X0l"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VEj-uw-X0l"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="VEj-uw-X0l"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="1.1折" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1V-6v-RKD">
+                        <rect key="frame" x="55" y="75" width="30" height="10"/>
+                        <color key="backgroundColor" red="1" green="0.35292065080000001" blue="0.30784854249999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="LME-vA-HO8"/>
+                            <constraint firstAttribute="height" constant="10" id="Oji-WL-5hJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="6"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LME-vA-HO8"/>
+                                <exclude reference="Oji-WL-5hJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="LME-vA-HO8"/>
+                                <include reference="Oji-WL-5hJ"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS4-Ob-Uf6">
+                        <rect key="frame" x="10" y="85" width="70" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Ic7-KT-fnH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ic7-KT-fnH"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Ic7-KT-fnH"/>
+                            </mask>
+                        </variation>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FS4-Ob-Uf6" secondAttribute="trailing" constant="10" id="2T3-bF-KDd"/>
+                <constraint firstItem="g1V-6v-RKD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="75" id="6zl-eY-bVk"/>
+                <constraint firstItem="KSA-Ta-3a9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="D9j-aP-hcn"/>
+                <constraint firstAttribute="trailing" secondItem="KSA-Ta-3a9" secondAttribute="trailing" constant="10" id="MD2-vO-57y"/>
+                <constraint firstAttribute="trailing" secondItem="g1V-6v-RKD" secondAttribute="trailing" constant="5" id="QOc-BJ-5K7"/>
+                <constraint firstItem="KSA-Ta-3a9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="ZGZ-bO-1Yr"/>
+                <constraint firstAttribute="bottom" secondItem="FS4-Ob-Uf6" secondAttribute="bottom" id="bVj-LX-Bo2"/>
+                <constraint firstItem="FS4-Ob-Uf6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="sga-44-cnh"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="D9j-aP-hcn"/>
+                    <exclude reference="MD2-vO-57y"/>
+                    <exclude reference="ZGZ-bO-1Yr"/>
+                    <exclude reference="2T3-bF-KDd"/>
+                    <exclude reference="bVj-LX-Bo2"/>
+                    <exclude reference="sga-44-cnh"/>
+                    <exclude reference="6zl-eY-bVk"/>
+                    <exclude reference="QOc-BJ-5K7"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="D9j-aP-hcn"/>
+                    <include reference="MD2-vO-57y"/>
+                    <include reference="ZGZ-bO-1Yr"/>
+                    <include reference="2T3-bF-KDd"/>
+                    <include reference="bVj-LX-Bo2"/>
+                    <include reference="sga-44-cnh"/>
+                    <include reference="6zl-eY-bVk"/>
+                    <include reference="QOc-BJ-5K7"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="discountNewLabel" destination="g1V-6v-RKD" id="RZp-nP-UZK"/>
+                <outlet property="iconImageView" destination="KSA-Ta-3a9" id="hpN-K0-W79"/>
+                <outlet property="jdPriceLabel" destination="FS4-Ob-Uf6" id="uGc-5a-DOX"/>
+            </connections>
+            <point key="canvasLocation" x="197" y="216"/>
+        </collectionViewCell>
+    </objects>
+</document>

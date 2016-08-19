@@ -1,0 +1,231 @@
+//
+//  AddPersonAirPlainViewController.m
+//  HHY
+//
+//  Created by jiangjun on 14-4-25.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "AddPersonAirPlainViewController.h"
+#import "CustomView.h"
+#import "SelectTypeButton.h"
+#import "Passenger.h"
+
+@interface AddPersonAirPlainViewController ()
+
+@end
+
+@implementation AddPersonAirPlainViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self initNav:self.headTitle];
+    NSLog(@"%d", self.editingEnable);
+    [self createScreen];
+}
+
+-(void)createRighteItem
+{
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(260, 0, 60, 44);
+    [rightButton setTitle:@"完成" forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    UIBarButtonItem *flexright = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL];
+    [flexright setWidth:isIOS7 ? -16 : -5];
+    self.navigationItem.rightBarButtonItems = @[flexright, rightItem];
+}
+
+-(void)createScreen
+{
+    NSArray *nameArray = @[@"姓          名", @"乘机人类型", @"证 件 类 型", @"证 件 号 码", @"出 生 日 期", @"手          机", @"邮          箱"];
+    CustomView *view1 = [[CustomView alloc] initWithFrame:CGRectMake(0, 20, 320, 210)];
+    [self.view addSubview:view1];
+    
+    for (int i=0; i<7; i++) {
+        if (i!=0) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, i*29, 280, 1)];
+            imageView.image = [UIImage imageNamed:@"xian"];
+            [view1 addSubview:imageView];
+        }
+        UILabel *textLable = [AffUIToolBar lableCgrectmake:CGRectMake(40, i*30, 80, 30) lableNametext:[nameArray objectAtIndex:i]];
+        textLable.font = [UIFont systemFontOfSize:12];
+        textLable.textAlignment = NSTextAlignmentLeft;
+        [view1 addSubview:textLable];
+    }
+    
+    _personTypeButton = [[SelectTypeButton alloc]  initWithFrame:CGRectMake(130, 30, 180, 30)];
+    [_personTypeButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    _personTypeButton.tag = 100;
+    [view1 addSubview:_personTypeButton];
+    
+    _certTypeButton = [[SelectTypeButton alloc] initWithFrame:CGRectMake(130, 60, 180, 30)];
+    [_certTypeButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    _certTypeButton.tag = 101;
+    [view1 addSubview:_certTypeButton];
+    
+    _nameTF = [[UITextField alloc] initWithFrame:CGRectMake(130, 0, 180, 30)];
+    _nameTF.borderStyle = UITextBorderStyleNone;
+    _nameTF.text = @"小木木";
+    _nameTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [view1 addSubview:_nameTF];
+    _nameTF.delegate = self;
+    
+    _certNumTF = [[UITextField alloc] initWithFrame:CGRectMake(130, 90, 180, 30)];
+    _certNumTF.borderStyle = UITextBorderStyleNone;
+    [view1 addSubview:_certNumTF];
+    _certNumTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _certNumTF.delegate = self;
+    
+    _birthdayTF = [[UITextField alloc] initWithFrame:CGRectMake(130, 120, 180, 30)];
+    _birthdayTF.borderStyle = UITextBorderStyleNone;
+    [view1 addSubview:_birthdayTF];
+    _birthdayTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _birthdayTF.delegate = self;
+    
+    _phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(130, 150, 180, 30)];
+    _phoneTF.borderStyle = UITextBorderStyleNone;
+    [view1 addSubview:_phoneTF];
+    _phoneTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _phoneTF.delegate = self;
+    
+    _emailTF = [[UITextField alloc] initWithFrame:CGRectMake(130, 180, 180, 30)];
+    _emailTF.borderStyle = UITextBorderStyleNone;
+    [view1 addSubview:_emailTF];
+    _emailTF.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _emailTF.delegate = self;
+    
+    if (self.editingEnable) {
+        _nameTF.text = _userModel.name;
+        _certNumTF.text = _userModel.zjh;
+        _birthdayTF.text = _userModel.birthday;
+        _phoneTF.text = _userModel.mobile;
+        _emailTF.text = _userModel.email;
+        if ([_userModel.note isEqualToString:@"CHILD"]) {
+            _personTypeButton.typeLable.text = @"儿童";
+        }else
+            _personTypeButton.typeLable.text = @"成人";
+        
+        NSArray *certArray = @[@"身份证", @"护照", @"其他"];
+        _certTypeButton.typeLable.text =[certArray objectAtIndex:_userModel.zjlx.integerValue];
+    }
+}
+
+-(void)btnClick:(SelectTypeButton *)button
+{
+    if (button.tag == 100) {
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"乘机人类型" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"成人", @"儿童", nil];
+        sheet.tag = 200;
+        [sheet showInView:self.view];
+    }else{
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"乘机人类型" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"身份证", @"护照", @"其他", nil];
+        sheet.tag = 201;
+        [sheet showInView:self.view];
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == 200) {
+        NSArray *array = @[@"成人", @"儿童"];
+        NSArray *typePasserger = @[@"ADULT", @"CHILD"];
+        _personTypeButton.typeLable.text = [array objectAtIndex:buttonIndex];
+        self.passegerType = [typePasserger objectAtIndex:buttonIndex];
+    }else{
+        NSArray *array = @[@"身份证", @"护照", @"其他"];
+        NSArray *certTypeArray = @[@"0", @"1", @"2"];
+        _certTypeButton.typeLable.text = [array objectAtIndex:buttonIndex];
+        self.certType = [certTypeArray objectAtIndex:buttonIndex];
+    }
+}
+
+-(void)rightClick
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    
+    if (self.editingEnable) {
+        [dict setValue:_nameTF.text forKey:@"name"];
+        [dict setValue:_userModel.id forKey:@"id"];
+        [dict setValue:_birthdayTF.text forKey:@"birthday"];
+        [dict setValue:_emailTF.text forKey:@"email"];
+        [dict setValue:self.certType forKey:@"zjlx"];
+        [dict setValue:self.passegerType forKey:@"note"];
+        [dict setValue:_phoneTF.text forKey:@"mobile"];
+        [dict setValue:_certNumTF.text forKey:@"zjh"];
+    }else{
+        [dict setValue:_nameTF.text forKey:@"name"];
+        [dict setValue:_birthdayTF.text forKey:@"birthday"];
+        [dict setValue:_emailTF.text forKey:@"email"];
+        [dict setValue:self.certType forKey:@"zjlx"];
+        [dict setValue:self.passegerType forKey:@"note"];
+        [dict setValue:_phoneTF.text forKey:@"mobile"];
+        [dict setValue:_certNumTF.text forKey:@"zjh"];
+    }
+    [dict setValue:@"1" forKey:@"sex"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (self.editingEnable) {
+        [[HHYNetworkEngine sharedInstance] updatePassenger:dict block:^(NSError *error, id data) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (!error) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }else{
+        [[HHYNetworkEngine sharedInstance] addPassenger:dict block:^(NSError *error, id data) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+}
+
+-(void)deletePerson
+{
+    
+}
+
+-(void)choseNum:(UIButton *)button
+{
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [_nameTF resignFirstResponder];
+    [_certNumTF resignFirstResponder];
+    [_birthdayTF resignFirstResponder];
+    [_phoneTF resignFirstResponder];
+    [_emailTF resignFirstResponder];
+    return YES;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

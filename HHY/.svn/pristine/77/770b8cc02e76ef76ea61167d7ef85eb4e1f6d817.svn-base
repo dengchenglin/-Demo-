@@ -1,0 +1,91 @@
+//
+//  HHYNetworkEngine.m
+//  HHY
+//
+//  Created by 谈文钊 on 14-5-31.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "HHYNetworkEngine.h"
+
+static NSString * const HHYHostName = @"192.168.1.100:8080/cloud";
+
+@implementation HHYNetworkEngine
+
+SYNTHESIZE_MINI_ARC_SINGLETON_FOR_CLASS(HHYNetworkEngine)
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.mkEngine = [[MKNetworkEngine alloc] initWithHostName:HHYHostName];
+    }
+    return self;
+}
+
+- (void)success:(id)responseObject block:(HHYResponseBlock)block
+{
+    NSLog(@"JSON: %@", responseObject);
+    if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        NSString *msg = [responseObject objectForKey:@"msg"];
+        if ([msg isEqualToString:@"ok"]) {
+            block(nil, [responseObject objectForKey:@"result"]);
+        } else {
+            if ([[responseObject objectForKey:@"result"] isEqualToString:@"tokenErr"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNeedLogin object:nil];
+            }
+            NSError *er = [NSError errorWithDomain:@"HHY"
+                                              code:9998
+                                          userInfo:@{NSLocalizedDescriptionKey: msg}];
+            block(er, nil);
+        }
+        
+    } else {
+        NSError *er = [NSError errorWithDomain:@"HHY"
+                                          code:9999
+                                      userInfo:@{NSLocalizedDescriptionKey: @"数据异常"}];
+        block(er, nil);
+    }
+}
+
+- (void)error:(NSError *)error block:(HHYResponseBlock)block
+{
+    NSLog(@"Error: %@", error);
+    block(error, nil);
+}
+
+- (void)getDataForPath:(NSString *)path params:(NSDictionary *)params block:(HHYResponseBlock)block;
+{
+    MKNetworkOperation *op = [self.mkEngine operationWithPath:path params:params httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        [self success:completedOperation.responseJSON block:block];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [self error:error block:block];
+    }];
+    [self.mkEngine enqueueOperation:op];
+}
+
+- (void)postDataForPath:(NSString *)path params:(NSDictionary *)params block:(HHYResponseBlock)block
+{
+    MKNetworkOperation *op = [self.mkEngine operationWithPath:path params:params httpMethod:@"POST"];
+    op.postDataEncoding = MKNKPostDataEncodingTypeJSON;
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        [self success:completedOperation.responseJSON block:block];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [self error:error block:block];
+    }];
+    [self.mkEngine enqueueOperation:op];
+}
+
+-(void)postURLDataForPath:(NSString *)path params:(NSDictionary *)params block:(HHYResponseBlock)block
+{
+    MKNetworkOperation *op = [self.mkEngine operationWithPath:path params:params httpMethod:@"POST"];
+    op.postDataEncoding = MKNKPostDataEncodingTypeURL;
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+    NSLog(@"json:%@", completedOperation.responseString);
+        [self success:completedOperation.responseJSON block:block];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [self error:error block:block];
+    }];
+    [self.mkEngine enqueueOperation:op];
+}
+@end

@@ -1,0 +1,343 @@
+//
+//  AddAirTicketViewController.m
+//  HHY
+//
+//  Created by jiangjun on 14-5-22.
+//  Copyright (c) 2014年 yunluosoft. All rights reserved.
+//
+
+#import "AddAirTicketViewController.h"
+#import "CustomView.h"
+#import "SelectTypeButton.h"
+#import "CitySelectButton.h"
+#import "DayModel.h"
+#import "CityModel.h"
+#import "TitcketViewController.h"
+
+@interface AddAirTicketViewController ()
+
+@end
+
+@implementation AddAirTicketViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;    [self initNav:@"机票"];
+    [self createView];
+    self.shippingspaceArray = [[NSArray alloc] initWithObjects:@"Y", @"C", @"F", nil];
+    self.shippingspaceType = @"Y";
+    
+    self.airWayArray = [[NSArray alloc] initWithObjects:@"null", @"CA", @"MU", @"CZ", @"HU", nil];
+    self.airWayType = @"null";
+}
+
+-(void)createRighteItem
+{
+    UIButton *phoneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    phoneButton.frame = CGRectMake(232, 0, 30, 44);
+    [phoneButton setImage:[UIImage imageNamed:@"playPhone"]forState:UIControlStateNormal];
+    [phoneButton addTarget:self action:@selector(playPhone) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *tempItem = [[UIBarButtonItem alloc] initWithCustomView:phoneButton];
+    
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(276, 0, 30, 44);
+    [rightButton setImage:[UIImage imageNamed:@"fhsy"]forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(returnRoot) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    UIBarButtonItem *flexright = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:NULL];
+    [flexright setWidth:5];
+    self.navigationItem.rightBarButtonItems = @[rightItem, flexright, tempItem];
+}
+
+
+
+
+
+-(void)createView
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    UILabel *label = [AffUIToolBar lableCgrectmake:CGRectMake(0, 0, 320, 30) lableNametext:@"增加航段"];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor whiteColor];
+    label.textColor = [JJDevice colorWithR:95 G:174 B:228 A:1];
+    [self.view addSubview:label];
+    //    从高度50开始
+    CustomView *view1 = [[CustomView alloc] initWithFrame:CGRectMake(0, 50, 320, 210)];
+    [self.view addSubview:view1];
+    
+    NSArray *array = @[@"出发城市", @"到达城市"];
+    NSArray *imageArray = @[@"cdate", @"zuoyi", @"hangban"];
+    UIButton *buttonWF = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonWF.frame = CGRectMake(18, 23, 20, 34);
+    [buttonWF setBackgroundImage:[UIImage imageNamed:@"wangfan"] forState:UIControlStateNormal];
+    [buttonWF addTarget:self action:@selector(btnWangfan) forControlEvents:UIControlEventTouchUpInside];
+    [view1 addSubview:buttonWF];
+    
+    for (int i=0; i<5; i++) {
+        if (i!=0 && i<3) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, i*39, 280, 1)];
+            imageView.image = [UIImage imageNamed:@"xian"];
+            [view1 addSubview:imageView];
+        }else if(i>=3){
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, i*39+10, 280, 1)];
+            imageView.image = [UIImage imageNamed:@"xian"];
+            [view1 addSubview:imageView];
+        }
+        
+        if (i<2) {
+            UILabel *lable = [AffUIToolBar lableCgrectmake:CGRectMake(40, i*40, 60, 40) lableNametext:[array objectAtIndex:i]];
+            lable.font = [UIFont systemFontOfSize:14];
+            lable.textAlignment = NSTextAlignmentCenter;
+            [view1 addSubview:lable];
+        }
+        
+        if (i==2) {
+            UIImageView *imageView2 = [AffUIToolBar imageviewRect:CGRectMake(20, i*40+12, 25/1.5, 22/1.5) andimage:[UIImage imageNamed:[imageArray objectAtIndex:i-2]]];
+            [view1 addSubview:imageView2];
+        }else if(i>2){
+            UIImageView *imageView2 = [AffUIToolBar imageviewRect:CGRectMake(20, i*40+20, 25/1.5, 22/1.5) andimage:[UIImage imageNamed:[imageArray objectAtIndex:i-2]]];
+            [view1 addSubview:imageView2];
+        }
+    }
+    _lineView = [AffUIToolBar imageviewRect:CGRectMake(159, 128, 1, 39) andimage:[UIImage imageNamed:@"xian"]];
+    [view1 addSubview:_lineView];
+    
+    UIImageView *image = [AffUIToolBar imageviewRect:CGRectMake(165, 140, 25/1.5, 22/1.5) andimage:[UIImage imageNamed:@"chengren"]];
+    [view1 addSubview:image];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    CityModel *startModel = [[CityModel alloc]initWithDictionary:[defaults objectForKey:@"startCity"] error:nil];
+    CityModel *endModel = [[CityModel alloc] initWithDictionary:[defaults objectForKey:@"endCity"] error:nil];
+    _startPointBT = [[SelectTypeButton alloc]initWithFrame:CGRectMake(120, 0, 200, 40)];
+    _startPointBT.tag = 200;
+    _startPointBT.typeLable.text = startModel.cityName;
+    self.startingModel = startModel;
+    [_startPointBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    _startPointBT.typeLable.textColor = [JJDevice colorWithR:151 G:151 B:151 A:1];
+    [view1 addSubview:_startPointBT];
+    
+    _destinationBT = [[SelectTypeButton alloc]initWithFrame:CGRectMake(120, 40, 200, 39)];
+    _destinationBT.tag = 201;
+    _destinationBT.typeLable.text = endModel.cityName;
+    self.endingModel = endModel;
+    [_destinationBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    _destinationBT.typeLable.textColor = [JJDevice colorWithR:151 G:151 B:151 A:1];
+    [view1 addSubview:_destinationBT];
+    
+    _startDateLable = [AffUIToolBar lableCgrectmake:CGRectMake(40, 79, 60, 50) lableNametext:@"出发日期"];
+    _startDateLable.font = [UIFont systemFontOfSize:14];
+    _startDateLable.textAlignment = NSTextAlignmentCenter;
+    [view1 addSubview:_startDateLable];
+    
+    _startDateBT = [[CitySelectButton alloc]initWithFrame:CGRectMake(120, 79, 200, 49)];
+    _startDateBT.tag = 300;
+    NSDate *nowdate = [NSDate dateWithTimeIntervalSinceNow:8*3600];
+    DayModel *nowDayModel = [[DayModel alloc] init];
+    [nowDayModel anayse:nowdate];
+    NSString *weekString = [JJDevice weekdayFromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    [_startDateBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    _startDateBT.yearLable.textColor = [JJDevice colorWithR:151 G:151 B:151 A:1];
+    nowDayModel.year_weekdayDespt = [NSString stringWithFormat:@"%@ %@", [[nowDayModel.year_weekdayDespt componentsSeparatedByString:@" "] objectAtIndex:0], weekString];
+    self.startingDay = nowDayModel;
+    self.endingDay = nowDayModel;
+    [view1 addSubview:_startDateBT];
+    
+    _changweiBT = [[SelectTypeButton alloc] initWithFrame:CGRectMake(40, 126, 120, 39) ];
+    _changweiBT.typeLable.text=@"经济舱";
+    _changweiBT.typeLable.font = FONT_15;
+    _changweiBT.tag = 301;
+    [_changweiBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [view1 addSubview:_changweiBT];
+    
+    _chengkeBT = [[SelectTypeButton alloc] initWithFrame:CGRectMake(200, 126, 120, 39) ];
+    _chengkeBT.typeLable.text=@"成人";
+    _chengkeBT.typeLable.font = FONT_15;
+    _chengkeBT.tag = 203;
+    [_chengkeBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [view1 addSubview:_chengkeBT];
+    
+    _companyBT = [[SelectTypeButton alloc] initWithFrame:CGRectMake(40, 168, 280, 42) ];
+    _companyBT.typeLable.text=@"所有航空公司";
+    _companyBT.tag = 204;
+    _companyBT.typeLable.font = FONT_15;
+    [_companyBT addTarget:self action:@selector(choseNum:) forControlEvents:UIControlEventTouchUpInside];
+    [view1 addSubview:_companyBT];
+    
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    loginButton.frame = CGRectMake(60, 300, 200, 40);
+    [self.view addSubview:loginButton];
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"chaxun"] forState:UIControlStateNormal];
+    loginButton.layer.cornerRadius = 5;
+    loginButton.layer.masksToBounds = YES;
+    [loginButton addTarget:self action:@selector(askTick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == 500) {
+        if(buttonIndex == 3)
+        {
+            return;
+        }
+        NSArray *array = @[@"经济舱", @"商务舱", @"头等舱"];
+        self.changweiBT.typeLable.text = [array objectAtIndex:buttonIndex];
+        self.shippingspaceType = [self.shippingspaceArray objectAtIndex:buttonIndex];
+    }else if (actionSheet.tag == 501){
+        if(buttonIndex == 2)
+        {
+            return;
+        }
+        NSArray *array = @[@"成人", @"儿童"];
+        self.chengkeBT.typeLable.text = [array objectAtIndex:buttonIndex];
+    }else if (actionSheet.tag == 502){
+        if(buttonIndex == 5)
+        {
+            return;
+        }
+        NSArray *array = @[@"所有航空公司", @"中国国际航空", @"中国东方航空", @"中国南方航空", @"海南航空"];
+        self.companyBT.typeLable.text = [array objectAtIndex:buttonIndex];
+        self.airWayType = [self.airWayArray objectAtIndex:buttonIndex];
+    }
+}
+
+#pragma ChoseButton Click
+-(void)choseNum:(UIButton *)button
+{
+    if (button.tag == 200 || button.tag == 201) {
+        CityListViewController *vc = [[CityListViewController alloc] init];
+        if (button.tag == 200) {
+            vc.isStarting = YES;
+            vc.titleString = @"出发城市";
+            vc.needCity = self.startingModel;
+        }else{
+            vc.titleString = @"到达城市";
+            vc.isStarting = NO;
+            vc.needCity = self.endingModel;
+        }
+        vc.target = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if(button.tag == 300 || button.tag == 202){
+        DateSelectViewController *dvc = [[DateSelectViewController alloc] init];
+        if (button.tag == 300) {
+            dvc.titleString = @"起始日期";
+            dvc.isStarting = YES;
+        }else{
+            dvc.titleString = @"到达日期";
+            dvc.isStarting = NO;
+        }
+        dvc.target = self;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }else if(button.tag == 301){
+        UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"舱位类型" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"经济舱", @"商务舱", @"头等舱", nil];
+        action.delegate = self;
+        action.tag = 500;
+        [action showInView:self.view];
+    }else if(button.tag == 203){
+        UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"乘客类型" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"成人", @"儿童", nil];
+        action.delegate = self;
+        action.tag = 501;
+        [action showInView:self.view];
+    }else if (button.tag == 204){
+        UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"所有航空公司", @"中国国际航空", @"中国东方航空", @"中国南方航空", @"海南航空", nil];
+        action.delegate = self;
+        action.tag = 502;
+        [action showInView:self.view];
+    }
+}
+
+#pragma CityListViewControllerDelegate
+-(void)staringCity:(CityModel *)model
+{
+    self.startingModel = model;
+}
+
+-(void)endingCity:(CityModel *)model
+{
+    self.endingModel = model;
+}
+
+#pragma DateSelectViewControllerDelegate
+-(void)changeDateStarting:(DayModel *)day
+{
+    self.startingDay = day;
+}
+
+-(void)changeDateEnd:(DayModel *)day
+{
+    self.endingDay = day;
+}
+#pragma changeCity Day
+-(void)changeCity
+{
+    self.startPointBT.typeLable.text = self.startingModel.cityName;
+    self.destinationBT.typeLable.text = self.endingModel.cityName;
+    self.startDateBT.dateLable.text = self.startingDay.month_DayDespt;
+    self.startDateBT.yearLable.text = self.startingDay.year_weekdayDespt;
+}
+
+#pragma asking Ticket
+-(void)askTick
+{
+    if ([self.startPointBT.typeLable.text isEqualToString:@""] || self.startPointBT.typeLable.text==nil) {
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"出发城市不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [view show];
+    }else if ([self.destinationBT.typeLable.text isEqualToString:@""] || self.destinationBT.typeLable.text==nil){
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"到达城市不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [view show];
+    }else if([self.startDateBT.dateLable.text isEqualToString:@""] || self.startDateBT.dateLable.text==nil){
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"提示" message:@"出发日期不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [view show];
+    }else{
+        TitcketViewController *tvc = [[TitcketViewController alloc] init];
+        tvc.ticketURL = [[NSString alloc] initWithFormat:ASK_AIRTICKET, self.airWayType, self.startingModel.codeName, self.endingModel.codeName, self.startingDay.time,self.shippingspaceType];
+        NSArray *array = [self.startingDay.description componentsSeparatedByString:@"-"];
+        tvc.dateString = [NSString stringWithFormat:@"%@年%@月%@日",[array objectAtIndex:0], [array objectAtIndex:1], [array objectAtIndex:2]];
+        tvc.start_endPoint = [NSString stringWithFormat:@"%@-%@", self.startPointBT.typeLable.text, self.destinationBT.typeLable.text];
+        tvc.dateModel = self.startingDay;
+        tvc.shippingspaceType = self.shippingspaceType;
+        [self.navigationController pushViewController:tvc animated:YES];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self changeCity];
+}
+
+-(void)btnWangfan
+{
+    NSString *tmptext = self.startPointBT.typeLable.text;
+    self.startPointBT.typeLable.text = self.destinationBT.typeLable.text;
+    self.destinationBT.typeLable.text = tmptext;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

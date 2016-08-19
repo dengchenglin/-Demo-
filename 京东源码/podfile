@@ -1,0 +1,6 @@
+
+use_frameworks!
+
+platform :ios, ‘8.0’
+pod 'SDWebImage', '~> 3.7.3'
+pod 'MJRefresh', '~> 2.3.2'
